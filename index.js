@@ -30,7 +30,7 @@ for (let i = 0; i < buttons.length; i++) {
         if (seatNumber < 4){
         button.style.backgroundColor = '#1DD100';
         }else{
-            alert("you can not click other sit number")
+            alert("You cannot click other sit number")
         }
 
         if (seatNumber < 8 && seatLeft > 0) {
@@ -45,6 +45,26 @@ for (let i = 0; i < buttons.length; i++) {
 function updateSeatNumber(number) {
     seatNumberElement.innerText = number;
 }
+const btn =document.getElementById("apply-btn");
+btn.addEventListener("click",function(){
+    const couponElement = document.getElementById('input-field').value ;
+    const couponCode =couponElement.split(' ').join("").toUpperCase();
+    console.log(couponCode);
+    
+        if(couponCode === "NEW15"){
+            const discountElement =document.getElementById('discountPrice');
+            const discountAmount = totalPrice *0.15;
+            discountElement.innerText=discountAmount.toFixed(2);
+            const grandTotal =document.getElementById('grand-total');
+            grandTotal.innerText= totalPrice - discountAmount.toFixed(2);
+            document.getElementById('input-field').value ="";
+            
+
+        }else{
+            alert("Invalid coupone")
+        }
+
+})
 
 
 
